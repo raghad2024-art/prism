@@ -1,142 +1,361 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prism | Decision Reflection</title>
 
-<title>Prism | Decision Intelligence</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 
 *{
+margin:0;
+padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:Arial, sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
-margin:0;
-background:linear-gradient(135deg,#071021,#162b55);
+
+background:
+radial-gradient(circle at top,#334155 0%,transparent 40%),
+linear-gradient(135deg,#020617,#0f172a);
+
 color:white;
-min-height:100vh;
 }
 
 
-header{
-padding:30px 8%;
+nav{
+
+position:fixed;
+top:0;
+width:100%;
+padding:20px 8%;
+
 display:flex;
 justify-content:space-between;
+align-items:center;
+
+background:rgba(15,23,42,.75);
+backdrop-filter:blur(10px);
+
+z-index:1000;
+
 }
 
 
 .logo{
-font-size:35px;
+
+font-size:30px;
 font-weight:bold;
+
+background:linear-gradient(90deg,#60a5fa,#c084fc);
+-webkit-background-clip:text;
+color:transparent;
+
 }
 
-.logo span{
-color:#4da6ff;
+
+nav a{
+
+color:#cbd5e1;
+text-decoration:none;
+margin-left:25px;
+transition:.3s;
+
 }
+
+
+nav a:hover{
+
+color:white;
+
+}
+
 
 
 .hero{
+
+height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
 text-align:center;
-padding:70px 20px;
+
+padding:30px;
+
 }
+
 
 
 .hero h1{
-font-size:55px;
+
+font-size:90px;
+
+background:linear-gradient(90deg,#60a5fa,#c084fc);
+-webkit-background-clip:text;
+color:transparent;
+
 }
 
 
-.hero span{
-color:#4da6ff;
+.hero h2{
+
+font-size:35px;
+margin:20px;
+
 }
+
 
 
 .hero p{
+
 max-width:700px;
 margin:auto;
+
 font-size:20px;
-color:#ddd;
-line-height:1.6;
+line-height:1.7;
+
+color:#cbd5e1;
+
 }
 
 
 
-.container{
+.btn{
 
-background:rgba(255,255,255,.1);
-backdrop-filter:blur(15px);
-width:90%;
-max-width:900px;
-margin:auto;
-padding:35px;
+display:inline-block;
+
+margin-top:35px;
+
+padding:16px 45px;
+
+border-radius:40px;
+
+background:linear-gradient(90deg,#2563eb,#9333ea);
+
+color:white;
+
+text-decoration:none;
+
+font-size:18px;
+
+transition:.3s;
+
+}
+
+
+.btn:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 15px 30px #0008;
+
+}
+
+
+
+
+section{
+
+padding:90px 10%;
+
+}
+
+
+
+.title{
+
+text-align:center;
+
+font-size:45px;
+
+margin-bottom:50px;
+
+}
+
+
+
+
+.cards{
+
+display:flex;
+
+gap:25px;
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+}
+
+
+
+.card{
+
+width:300px;
+
+padding:30px;
+
 border-radius:25px;
 
+background:rgba(30,41,59,.8);
+
+border:1px solid #334155;
+
 }
+
+
+.card h3{
+
+margin-bottom:15px;
+
+font-size:24px;
+
+}
+
+
+
+.card p{
+
+color:#cbd5e1;
+
+line-height:1.6;
+
+}
+
+
+
+
+
+.timeline{
+
+max-width:700px;
+
+margin:auto;
+
+}
+
+
+
+.step{
+
+background:#111827;
+
+padding:25px;
+
+border-radius:20px;
+
+margin:20px 0;
+
+border-left:5px solid #6366f1;
+
+}
+
+
+
+
+.analysis-box{
+
+max-width:800px;
+
+margin:auto;
+
+background:#111827;
+
+padding:40px;
+
+border-radius:30px;
+
+}
+
+
+
+textarea,input{
+
+width:100%;
+
+padding:15px;
+
+margin:15px 0;
+
+border-radius:15px;
+
+border:none;
+
+}
+
 
 
 textarea{
 
-width:100%;
-height:150px;
-border-radius:15px;
-border:none;
-padding:20px;
-font-size:17px;
+height:130px;
 
 }
+
+
 
 
 button{
 
 width:100%;
-margin-top:20px;
-padding:18px;
+
+padding:16px;
+
 border:none;
+
 border-radius:30px;
-background:#4da6ff;
+
+background:linear-gradient(90deg,#2563eb,#9333ea);
+
 color:white;
+
 font-size:18px;
+
 cursor:pointer;
 
 }
 
 
 
-.result{
+#result{
+
+margin-top:25px;
+
+padding:25px;
+
+background:#020617;
+
+border-radius:20px;
 
 display:none;
-margin-top:30px;
 
 }
 
 
-.box{
-
-background:rgba(0,0,0,.25);
-padding:25px;
-border-radius:20px;
-margin-bottom:20px;
-
-}
-
-
-.box h3{
-color:#4da6ff;
-}
 
 
 
 footer{
 
 text-align:center;
+
 padding:40px;
-color:#aaa;
+
+color:#94a3b8;
+
+border-top:1px solid #334155;
 
 }
+
+
 
 </style>
 
@@ -146,279 +365,511 @@ color:#aaa;
 <body>
 
 
-<header>
+<nav>
 
 <div class="logo">
-Pr<span>i</span>sm
+Prism
 </div>
 
-</header>
+
+<div>
+
+<a href="#about">About</a>
+<a href="#psychology">Psychology</a>
+<a href="#analysis">Analysis</a>
+<a href="#contact">Contact</a>
+
+</div>
+
+
+</nav>
 
 
 
 <section class="hero">
 
+
+<div>
+
+
 <h1>
-Think Beyond The <span>Decision</span>
+Prism
 </h1>
 
+
+<h2>
+See the thoughts behind your choices.
+</h2>
+
+
+
 <p>
-Prism helps you analyze important choices through logic,
-future impact, risks and opportunities.
+
+A decision reflection platform that helps you understand your thinking patterns,
+identify hidden biases, and make more conscious choices.
+
 </p>
+
+
+
+<a href="#analysis" class="btn">
+Start Your Reflection
+</a>
+
+
+</div>
+
 
 </section>
 
 
 
-<div class="container">
 
 
-<h2>
-Decision Analyzer
+<section id="about">
+
+
+<h2 class="title">
+What is Prism?
 </h2>
 
 
-<br>
+<div class="card" style="margin:auto;max-width:800px;width:100%">
 
 
-<textarea id="input"
-placeholder="Example: Should I change my major? Should I travel? Should I accept this opportunity?">
+<p>
+
+Prism is an interactive platform inspired by cognitive psychology and philosophy.
+It does not tell you what decision to make.
+Instead, it helps you understand why you choose and what influences your thinking.
+
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<section id="psychology">
+
+
+<h2 class="title">
+Psychology Behind Prism
+</h2>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<h3>
+🧠 Confirmation Bias
+</h3>
+
+<p>
+The tendency to focus only on information that supports our existing beliefs.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+⚡ Fear of Failure
+</h3>
+
+<p>
+When fear prevents us from exploring opportunities and making confident choices.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+👥 Social Pressure
+</h3>
+
+<p>
+When expectations from others influence our personal decisions.
+</p>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<section>
+
+
+<h2 class="title">
+How It Works
+</h2>
+
+
+<div class="timeline">
+
+
+<div class="step">
+01 - Describe your decision
+</div>
+
+
+<div class="step">
+02 - Reflect on your thoughts
+</div>
+
+
+<div class="step">
+03 - Analyze psychological influences
+</div>
+
+
+<div class="step">
+04 - Receive your Prism insight report
+</div>
+
+
+</div>
+
+
+</section>
+<section id="analysis">
+
+<h2 class="title">
+Decision Analysis
+</h2>
+
+
+<div class="analysis-box">
+
+
+<p>
+What decision are you currently thinking about?
+</p>
+
+
+<textarea id="decision"
+placeholder="Example: Should I change my major?">
 </textarea>
 
 
-<button onclick="analyze()">
-Analyze My Decision
+
+<label>
+Confidence in your decision
+</label>
+
+<input id="confidence" type="range" min="0" max="10">
+
+
+
+<label>
+Fear of failure
+</label>
+
+<input id="fear" type="range" min="0" max="10">
+
+
+
+<label>
+How much does this match your goals?
+</label>
+
+<input id="goal" type="range" min="0" max="10">
+
+
+
+<label>
+External pressure from others
+</label>
+
+<input id="pressure" type="range" min="0" max="10">
+
+
+
+<button onclick="analyzeDecision()">
+Reveal Prism Analysis
 </button>
 
 
 
-<div class="result" id="result">
-
-
-<div class="box">
-<h3>🧩 Decision Type</h3>
-<p id="type"></p>
-</div>
-
-
-<div class="box">
-<h3>✅ Opportunities</h3>
-<p id="pros"></p>
-</div>
-
-
-<div class="box">
-<h3>⚠️ Risks To Consider</h3>
-<p id="risks"></p>
-</div>
-
-
-<div class="box">
-<h3>🧠 Important Questions</h3>
-<p id="questions"></p>
-</div>
-
-
-<div class="box">
-<h3>🔮 Prism Recommendation</h3>
-<p id="recommend"></p>
-</div>
-
-
-<div class="box">
-<h3>⭐ Decision Clarity Score</h3>
-<p id="score"></p>
-</div>
-
+<div id="result">
 
 </div>
 
 
 </div>
+
+
+</section>
+
+
+
+
+
+<section id="contact">
+
+<h2 class="title">
+Contact
+</h2>
+
+
+<div class="card" style="margin:auto;text-align:center">
+
+
+<h3>
+Prism Project
+</h3>
+
+
+<p>
+Designed & Developed by
+</p>
+
+
+<h3>
+Raghad Alharbi
+</h3>
+
+
+<p style="margin-top:15px">
+A project exploring the connection between technology,
+psychology, and decision-making.
+</p>
+
+
+</div>
+
+
+</section>
+
+
 
 
 
 <footer>
 
-Created by <b>Raghad Alharbi</b><br>
 Prism © 2026
 
+<br><br>
+
+Designed & Developed by
+<br>
+
+<b>Raghad Alharbi</b>
+
 </footer>
+
+
 
 
 
 <script>
 
 
-function analyze(){
+function analyzeDecision(){
 
 
-let text=document.getElementById("input").value.toLowerCase();
+let decision =
+document.getElementById("decision").value;
 
 
-if(text.trim()==""){
-alert("Please write your decision first");
+
+if(decision.trim()==""){
+
+alert("Please describe your decision first.");
+
 return;
-}
-
-
-
-let type="General Decision";
-let pros="";
-let risks="";
-let questions="";
-let recommend="";
-
-
-
-if(
-text.includes("study")||
-text.includes("university")||
-text.includes("major")||
-text.includes("college")||
-text.includes("تخصص")||
-text.includes("جامعة")
-){
-
-
-type="Education & Career Decision";
-
-pros=
-"• Personal growth and knowledge development<br>"+
-"• Better future opportunities<br>"+
-"• Building valuable skills";
-
-
-risks=
-"• Choosing based only on temporary emotions<br>"+
-"• Ignoring financial or lifestyle factors<br>"+
-"• Not researching alternatives";
-
-
-questions=
-"• Does this choice support my 5-year goals?<br>"+
-"• What skills will I gain?<br>"+
-"• Do I have a realistic plan?";
-
-
-recommend=
-"Focus on long-term value, not only immediate comfort. Compare options using goals, opportunities and realistic limitations.";
 
 }
 
 
 
-else if(
-text.includes("money")||
-text.includes("buy")||
-text.includes("car")||
-text.includes("شراء")||
-text.includes("مال")
-){
-
-type="Financial Decision";
-
-
-pros=
-"• Possible improvement in quality of life<br>"+
-"• Achieving personal goals";
-
-
-risks=
-"• Unexpected expenses<br>"+
-"• Financial pressure<br>"+
-"• Opportunity cost";
-
-
-questions=
-"• Can I afford this comfortably?<br>"+
-"• Is this a need or a temporary desire?<br>"+
-"• What happens after 6 months?";
-
-
-recommend=
-"Evaluate the long-term financial impact before making a commitment.";
-
-}
+let confidence =
+Number(document.getElementById("confidence").value);
 
 
 
-else if(
-text.includes("travel")||
-text.includes("trip")||
-text.includes("سفر")
-){
-
-type="Lifestyle Decision";
+let fear =
+Number(document.getElementById("fear").value);
 
 
-pros=
-"• New experiences<br>"+
-"• Personal development<br>"+
-"• Creating memories";
+
+let goal =
+Number(document.getElementById("goal").value);
 
 
-risks=
-"• Budget challenges<br>"+
-"• Planning difficulties";
+
+let pressure =
+Number(document.getElementById("pressure").value);
 
 
-questions=
-"• Is the timing suitable?<br>"+
-"• Is the budget realistic?<br>"+
-"• Does it match my priorities?";
 
 
-recommend=
-"Good decisions combine enjoyment with preparation.";
+
+let score =
+confidence + goal - fear - pressure + 20;
+
+
+
+let bias;
+
+
+
+if(pressure >= 7){
+
+bias =
+"Social Pressure Bias: Your choice may be influenced by other people's expectations.";
 
 }
 
+else if(fear >= 7){
 
+bias =
+"Fear of Failure Bias: Fear might be affecting your evaluation.";
+
+}
+
+else if(confidence >= 9){
+
+bias =
+"Overconfidence Bias: Consider checking more information before deciding.";
+
+}
 
 else{
 
-
-type="Personal Decision";
-
-
-pros=
-"• Potential growth opportunity<br>"+
-"• Learning from experience";
-
-
-risks=
-"• Unknown consequences<br>"+
-"• Emotional bias";
-
-
-questions=
-"• What are the possible outcomes?<br>"+
-"• What advice would I give someone else?<br>"+
-"• Will I regret avoiding this choice?";
-
-
-recommend=
-"Collect information, consider alternatives, then choose the option that aligns with your values.";
+bias =
+"No strong bias detected. Your thinking appears balanced.";
 
 }
 
 
 
-let score=Math.floor(Math.random()*20)+75;
+
+
+let advice;
 
 
 
-document.getElementById("type").innerHTML=type;
-document.getElementById("pros").innerHTML=pros;
-document.getElementById("risks").innerHTML=risks;
-document.getElementById("questions").innerHTML=questions;
-document.getElementById("recommend").innerHTML=recommend;
-document.getElementById("score").innerHTML=score+"% clarity";
+if(score >= 25){
+
+advice =
+"Your decision shows strong clarity and alignment with your personal goals.";
+
+}
+
+else if(score >=15){
+
+advice =
+"Your decision has potential, but deeper reflection may help you gain confidence.";
+
+}
+
+else{
+
+advice =
+"Take more time to explore your motivations and possible influences.";
+
+}
 
 
-document.getElementById("result").style.display="block";
+
+
+
+let result =
+document.getElementById("result");
+
+
+
+result.style.display="block";
+
+
+
+result.innerHTML = `
+
+
+<h2>
+Your Prism Report
+</h2>
+
+
+<br>
+
+
+<h3>
+Decision Clarity Score: ${score}/40
+</h3>
+
+
+<br>
+
+
+<p>
+<b>Decision:</b>
+${decision}
+</p>
+
+
+<br>
+
+
+<p>
+<b>Psychological Insight:</b>
+<br>
+${bias}
+</p>
+
+
+<br>
+
+
+<p>
+<b>Reflection:</b>
+<br>
+${advice}
+</p>
+
+
+<br>
+
+
+<p>
+Question to consider:
+<br><br>
+
+"Am I choosing this because it reflects my values,
+or because I am afraid of another option?"
+
+</p>
+
+
+`;
+
+
+
+result.scrollIntoView({
+
+behavior:"smooth"
+
+});
 
 
 }
@@ -428,4 +879,5 @@ document.getElementById("result").style.display="block";
 
 
 </body>
+
 </html>
